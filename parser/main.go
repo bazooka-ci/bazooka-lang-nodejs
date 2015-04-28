@@ -18,7 +18,10 @@ const (
 
 func init() {
 	log.SetFormatter(&bzklog.BzkFormatter{})
-	bazooka.LoadCryptoKeyFromFile("/bazooka-cryptokey")
+	err := bazooka.LoadCryptoKeyFromFile("/bazooka-cryptokey")
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 type ConfigNodejs struct {
